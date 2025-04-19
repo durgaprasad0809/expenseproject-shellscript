@@ -56,4 +56,15 @@ VALIDATE $? "Enabeling the My Sql service"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Enabeling the My Sql service"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
+#mysql_secure_installation --set-root-pass ExpenseApp@1
+
+mysql -h mysql.daws82s-durga.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+
+if [ $? -ne 0 ]
+then
+    echo "MySQL Root password not setup" &>>$LOG_FILE_NAME
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? "Setting Root Password"
+else
+    echo -e "MySQL Root password already setup ... $Y SKIPPING $N"
+fi
