@@ -45,15 +45,15 @@ echo "Current User id is ::" ${USERID} # Normal User Id is 1001 and Sudo User Id
 CHECK_ROOT # Calling the Check root function with out  any input args
 
 #Install MySQL Server
-dnf install mysql-server -y
+dnf install mysql-server -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing the My Sqlserver"
 
 # enable MySQL Service
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Enabeling the My Sql service"
 
 # Start MySQL Service
-systemctl start mysqld
+systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Enabeling the My Sql service"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
