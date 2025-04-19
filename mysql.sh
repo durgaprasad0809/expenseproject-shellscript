@@ -14,7 +14,7 @@ LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
-# Cr/eating the Validate Function using shell scripting
+# Creating the Validate Function using shell scripting
 VALIDATE(){
     if($1 -ne 0)
     then
