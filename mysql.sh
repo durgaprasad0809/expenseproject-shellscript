@@ -54,10 +54,11 @@ VALIDATE $? "Enabeling the My Sql service"
 
 # Start MySQL Service
 systemctl start mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "Enabeling the My Sql service"
+VALIDATE $? "Start the My Sql service"
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1
 
+# To Handling Reset Password Logic
 mysql -h mysql.daws82s-durga.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
